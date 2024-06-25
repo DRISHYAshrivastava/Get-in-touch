@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background for contrast */
+            padding: 20px;
+        }
+        h2 {
+            background-color: orange;
+            color: darkblue;
+            border: 2px solid darkblue;
+            padding: 10px;
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+            color: darkblue;
+        }
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: transparent; /* Transparent background */
+            border: 2px solid darkblue;
+            border-radius: 10px;
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: orange;
+            border: 2px solid orange; /* Orange border */
+            padding: 5px;
+            border-radius: 5px;
+            background-color: darkblue; /* Dynamic background based on content length */
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+            width: calc(100% - 12px);
+            padding: 5px;
+            margin-bottom: 15px; /* Increased gap between label and input */
+            border: 2px solid #1a73e8; /* Blue border */
+            border-radius: 5px;
+            color: orange;
+            background-color: transparent; /* Transparent background */
+        }
+        input[type="text"]:hover,
+        input[type="email"]:hover,
+        input[type="url"]:hover,
+        textarea:hover,
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        textarea:focus {
+            border-color: #4285f4; /* Darker blue on hover/focus */
+            background-color: rgba(26, 115, 232, 0.1); /* Light blue background on hover/focus */
+        }
+        button[type="submit"] {
+            display: block;
+            margin: 0 auto; /* Center align the button */
+            background-color: #4caf50; /* Green background */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        /* Popup message styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: black;
+            border: 2px solid #1a73e8; /* Blue border */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        .popup-content {
+            text-align: center;
+            color: orange; /* Blue text color */
+        }
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #1a73e8; /* Blue color for cross icon */
+            font-size: 20px;
+        }
+        /* Error message styles */
+        #error-message {
+            display: none;
+            color: white;
+            background-color: red;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Reach Out and I'll Reach Back </h2>
+    <h3>(within 24 hours, promise!)</h3>
+
+    <!-- Error message container -->
+    <div id="error-message"></div>
+
+    <form id="contactForm" action="https://formsubmit.co/drishya1114@gmail.com" method="POST" onsubmit="return validateForm()">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Your Email ID:</label>
+        <input type="email" id="email" name="_replyto" required><br><br>
+
+        <label for="message">Got something to say? Type away!</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="linkedin">Your LinkedIn Profile:</label>
+        <input type="url" id="linkedin" name="linkedin"><br><br>
+
+        <input type="hidden" name="_subject" value="New submission! on portfolio site">
+        <input type="hidden" name="_format" value="plain">
+        <button type="submit">Send and Fly!</button>
+    </form>
+
+    <!-- Popup message -->
+    <div id="popup" class="popup">
+        <span class="close-popup" onclick="hidePopup()">&times;</span>
+        <div class="popup-content">
+            <p><strong>Your message has taken flight!✈️</strong></p>
+            <p>Hang tight! You'll hear from me within 24 hours !!</p>
+            <p>Keep an eye on your Inbox ✉️</p>
+        </div>
+    </div>
+
+    <!-- JavaScript to show/hide popup and validate form -->
+    <script>
+        function showPopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
+
+        function hidePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var message = document.getElementById("message").value.trim();
+
+            if (name === "" || email === "" || message === "") {
+                var errorMessage = document.getElementById("error-message");
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "Oops! Looks like you missed filling !! Please check.";
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>
