@@ -17,7 +17,7 @@
             border: 2px solid darkblue;
             padding: 10px;
             text-align: center
-            margin: 5px;
+        
         }
         h3 {
             text-align: center;
@@ -64,7 +64,9 @@
             border-color: #4285f4; /* Darker blue on hover/focus */
             background-color: orange; /* Light blue background on hover/focus */
         }
-         
+        .button-container {
+        text-align: center; /* Center align the button within the container */
+        }
         button[type="submit"] {
             background-color: #4caf50; /* Green background */
             color: white;
@@ -74,7 +76,8 @@
             border-radius: 5px;
             font-size: 16px;
             transition: background-color 0.3s ease
-            text-align: center;
+            text-align: center
+            display: inline-block;
         }
         button[type="submit"]:hover {
             background-color: #45a049; /* Darker green on hover */
@@ -140,7 +143,9 @@
 
         <input type="hidden" name="_subject" value="New submission! on portfolio site">
         <input type="hidden" name="_format" value="plain">
-        <button type="submit" onclick="showPopup()">Send and Fly!</button>
+        <div class="button-container">
+            <button type="submit" onclick="showPopup()">Send and Fly!</button>
+        </div>
     </form>
 
     <!-- Popup message -->
